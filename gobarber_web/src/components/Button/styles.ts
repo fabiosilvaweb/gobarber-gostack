@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Container = styled.button`
   background: var(--primary);
   height: 56px;
-  color: var(--white);
+  color: var(--dark);
   border: 0;
   border-radius: 10px;
   padding: 16px;
