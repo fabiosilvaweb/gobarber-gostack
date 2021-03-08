@@ -4,20 +4,25 @@ import { FiArrowLeft, FiUser, FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import getValidationErrors from '../../utils/getValidationErrors';
 
+import { Form } from '@unform/web';
 import * as Yup from "yup";
+import api from '../../services/api';
 
 import * as Styled from './styles';
-
-import { Form } from '@unform/web';
-
 import logo from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+interface SignUpFormData {
+  name: string;
+  email: string;
+  password: string;
+}
+
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback(async (data: object) => {
+  const handleSubmit = useCallback(async (data: SignUpFormData) => {
     try {
       formRef.current?.setErrors({});
 
@@ -30,6 +35,14 @@ const SignUp: React.FC = () => {
       await schema.validate(data, {
         abortEarly: false
       });
+
+      const response = await api.post("/users", {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
+
+      console.log(response);
 
     } catch(err) {
 
