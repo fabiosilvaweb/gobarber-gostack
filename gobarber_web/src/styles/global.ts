@@ -18,6 +18,7 @@ export default createGlobalStyle`
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  outline: none;
 }
 
 ul {
@@ -36,15 +37,17 @@ button {
 body, input, button, textarea, select {
   font-family: 'Roboto Slab', serif;
   -webkit-font-smoothing: antialiased;
+  font-size: 16px;
 }
 
 body {
   background: var(--background);
-  color: var(--text);
+  color: var(--white);
+ 
 }
 
 h1, h2, h3, h4, h5, h6, b, strong {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 `;
