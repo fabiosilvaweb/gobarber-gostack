@@ -1,15 +1,11 @@
 <p align="center"><img src="./assets/logo.png"/></p>
+
 # ✂ GoBarber - Bootcamp 14 GoStack
 
 <p align="center"><b>Visualizar Aplicação Online</b></p>
 <p align="center">
-  <a href="#" 
-  style="color:#d279ff; font-weight: bold; margin-right: 12px">Back-end(Heroku)</a>
-  | 
-  <a href="#"
-  style="font-weight: bold; margin-left: 12px">Front-end(Vercel)</a>
+  <a href="#">Back-end(Heroku)</a> | <a href="#">Front-end(Vercel)</a>
 </p>
-
 
 ### 📕 Descrição 
 
@@ -17,7 +13,7 @@ Aplicação para barbearias para controle e agendamento de serviços.
 
 ### 📚 Estrutura do projeto
 
-- [Backe-end da aplicação](./gobarber_api)
+- [Backe-end da aplicação](https://github.com/fabiosilvaweb/gobarber_api)
 - [Front-end da aplicação](./gobarber_web)
 - [Aplicação Mobile](./gorbarber_app)
 
