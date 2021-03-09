@@ -6,7 +6,7 @@ import {
 
 } from 'react-router-dom';
 
-import { useAuth } from '../hooks/AuthContext';
+import { useAuth } from '../hooks/Auth';
 
 interface RouteProps  extends ReactRouterProps{
  isPrivate?: boolean;

@@ -4,7 +4,9 @@ import { FiArrowLeft, FiUser, FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import getValidationErrors from '../../utils/getValidationErrors';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
+import { useToast } from '../../hooks/Toast'; 
 
 import { Form } from '@unform/web';
 import * as Yup from "yup";
@@ -24,6 +26,9 @@ interface SignUpFormData {
 const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
+  const { addToast } = useToast();
+  const history = useHistory();
+
   const handleSubmit = useCallback(async (data: SignUpFormData) => {
     try {
       formRef.current?.setErrors({});
@@ -38,21 +43,34 @@ const SignUp: React.FC = () => {
         abortEarly: false
       });
 
-      const response = await api.post("/users", {
+      await api.post("/users", {
         name: data.name,
         email: data.email,
         password: data.password,
       });
 
-      console.log(response);
+      addToast({
+        type: 'success',
+        title: 'Cadastro realizado com sucesso!'
+      });
+
+      history.push('/');
 
     } catch(err) {
 
-      const errors = getValidationErrors(err);
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErrors(err);
+  
+        formRef.current?.setErrors(errors);
+      }
 
-      formRef.current?.setErrors(errors);
+      addToast({
+        type: 'error',
+        title: 'Erro no Cadastro',
+        description: 'Ocorreu um erro ao fazer o cadastro, cheque as informções.'
+      });
     }
-  }, []);
+  }, [history, addToast]);
 
   return (
     <Styled.Container>
