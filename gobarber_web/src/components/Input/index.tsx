@@ -9,9 +9,10 @@ import * as Styled from './styles';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   icon?: React.ComponentType<IconBaseProps>;
+  containerStyle?: React.CSSProperties | undefined;
 }
 
-const Input: React.FC<InputProps> = ( { name, icon: Icon, ...rest } ) => {
+const Input: React.FC<InputProps> = ( { name, icon: Icon, containerStyle, ...rest } ) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [isFilled, setIsFilled] = useState<boolean>(false);
 
@@ -40,9 +41,10 @@ const Input: React.FC<InputProps> = ( { name, icon: Icon, ...rest } ) => {
   }, [fieldName, registerField]);
 
   return (
-    <Styled.Container isFocused={isFocused} isFilled={isFilled} isError={!!error}>
+    <Styled.Container style={containerStyle} isFocused={isFocused} isFilled={isFilled} isError={!!error}>
       { Icon &&  <Icon size={20} /> }
       <input 
+        name={name}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         ref={inputRef} 

@@ -13,6 +13,7 @@ import logo from '../../assets/logo.svg'
 import { FiClock, FiPower } from 'react-icons/fi';
 import api from '../../services/api';
 import { parseISO } from 'date-fns/esm';
+import { Link } from 'react-router-dom';
 
 interface MonthAvailabilityItem {
   day: number;
@@ -130,7 +131,7 @@ const Dashboard: React.FC = () => {
             <img src={ !!user.avatar_url ? user.avatar_url : 'https://avatar.tobi.sh/'  } alt={ user.name }/>
             <div>
               <span>Bem-vindo,</span>
-              <strong>{ user.name }</strong>
+              <Link to="/minha-conta"><strong>{ user.name }</strong></Link>
             </div>
           </Styled.Profile>
           <button type="button" onClick={signOut}><FiPower size={24}/></button>

@@ -211,6 +211,17 @@ export const Appointment = styled.div`
 export const Calendar = styled.aside`
   width: 380px;
 
+  @media (max-width: 800px) {
+    width: 100%;
+    flex: 1;
+    margin-top: 24px;
+
+    .DayPicker {
+      width: 100%;
+    }
+
+  }
+
   .DayPicker {
   border-radius: 10px;
 
